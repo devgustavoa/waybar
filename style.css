@@ -1,83 +1,370 @@
-@import "../omarchy/current/theme/waybar.css";
+/* vim: set fileencoding=utf-8 foldmethod=marker : */
+
+@define-color background #191724;
+
+@define-color foreground #e0def4;
+
+/* Core palette (Neutral colors) */
+
+@define-color black     #26233a;
+
+@define-color red       #eb6f92;
+
+@define-color green     #31748f;
+
+@define-color yellow    #f6c177;
+
+@define-color blue      #9ccfd8;
+
+@define-color magenta   #c4a7e7;
+
+@define-color cyan      #ebbcba;
+
+@define-color white     #e0def4;
+
+/* Bright variants */
+
+@define-color bright-black   #6e6a86;
+
+@define-color bright-red     #eb6f92;
+
+@define-color bright-green   #31748f;
+
+@define-color bright-yellow  #f6c177;
+
+@define-color bright-blue    #9ccfd8;
+
+@define-color bright-magenta #c4a7e7;
+
+@define-color bright-cyan    #ebbcba;
+
+@define-color bright-white   #e0def4;
+
+/* Accent / semantic colors */
+
+@define-color orange #f6c177;
+
+@define-color error  #eb6f92;
+
+/* Reset */
 
 * {
-  background-color: @background;
+  border: none;
+
+  border-radius: 0;
+
+  min-height: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  box-shadow: none;
+
+  text-shadow: none;
+}
+
+@keyframes blink-critical-text {
+  to {
+    color: @red;
+  }
+}
+
+@keyframes blink-modifier-text {
+  to {
+    color: @blue;
+  }
+}
+
+/* Main bar */
+
+#waybar.main {
+  background: transparent;
+
+  border-radius: 0;
+
+  font-family: "JetBrains Mono Nerd Font";
+
+  font-size: 9pt;
+
+  font-weight: 500;
+}
+
+/* Buttons */
+
+#waybar.main button {
+  font-family: "JetBrains Mono Nerd Font";
+
+  font-size: 9pt;
+
+  font-weight: 500;
+
+  transition: all 0.15s ease-in-out;
+}
+
+/* Modules */
+
+#waybar.main #custom-nvidia,
+#waybar.main #custom-weather,
+#waybar.main #custom-battery,
+#waybar.main #keyboard-state,
+#waybar.main #network,
+#waybar.main #battery,
+#waybar.main #backlight,
+#waybar.main #clock,
+#waybar.main #cpu,
+#waybar.main #language,
+#waybar.main #memory.swap,
+#waybar.main #memory.ram,
+#waybar.main #submap,
+#waybar.main #pulseaudio,
+#waybar.main #temperature,
+#waybar.main #tray,
+#waybar.main #window,
+#waybar.main #disk {
+  padding-left: 8pt;
+
+  padding-right: 8pt;
+
+  padding-bottom: 5px;
+
+  padding-top: 5px;
+}
+
+#waybar.main #tray {
+  padding-right: 6pt;
+}
+
+#waybar.main #custom-weather {
+  padding-right: 3pt;
+}
+
+/* Colors per module */
+
+#waybar.main #custom-nvidia,
+#waybar.main #cpu,
+#waybar.main #temperature,
+#waybar.main #memory.ram,
+#waybar.main #memory.swap,
+#waybar.main #disk {
+  color: @cyan;
+}
+
+#waybar.main #pulseaudio {
+  color: @magenta;
+}
+
+#waybar.main #custom-battery,
+#waybar.main #language,
+#waybar.main #backlight,
+#waybar.main #battery {
+  color: @green;
+}
+
+#waybar.main #custom-weather,
+#waybar.main #clock {
+  color: @yellow;
+}
+
+#waybar.main #window {
+  color: @blue;
+
+  margin-top: 0px;
+}
+
+/* Network */
+
+#waybar.main #network.info {
+  padding-right: 10px;
+
+  padding-left: 10px;
+
   color: @foreground;
 
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: 'JetBrainsMono Nerd Font Mono';
-  font-size: 12px;
+  background: transparent;
 }
 
-.modules-left {
-  margin-left: 8px;
+#waybar.main #network.info.wifi.normal,
+#waybar.main #network.info.ethernet {
+  color: @cyan;
+
+  padding-right: 15px;
 }
 
-.modules-right {
-  margin-right: 8px;
+#waybar.main #network.info.wifi {
+  color: @red;
+
+  padding-right: 15px;
 }
 
-#workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
+/* Submap */
+
+#waybar.main #submap.󰲏 {
+  color: @yellow;
+
+  animation: blink-modifier-text 1s steps(15) infinite alternate;
 }
 
-#workspaces button.empty {
-  opacity: 0.5;
+#waybar.main #submap. {
+  color: @green;
+
+  animation: blink-modifier-text 1s steps(15) infinite alternate;
 }
 
-#cpu,
-#battery,
-#pulseaudio,
-#custom-omarchy,
-#custom-screenrecording-indicator,
-#custom-update {
-  min-width: 12px;
-  margin: 0 7.5px;
+/* Critical states */
+
+#waybar.main #custom-nvidia.critical,
+#waybar.main #custom-battery.critical,
+#waybar.main #workspaces button.urgent,
+#waybar.main #workspaces button.special.urgent,
+#waybar.main #memory.swap.critical,
+#waybar.main #memory.ram.critical,
+#waybar.main #cpu.critical,
+#waybar.main #temperature.critical,
+#waybar.main #battery.critical.discharging {
+  color: @red;
+
+  animation: blink-critical-text 1s steps(15) infinite alternate;
 }
 
-#tray {
-  margin-right: 16px;
+/* Warnings */
+
+#waybar.main #pulseaudio.output.muted,
+#waybar.main #pulseaudio.input.source-muted {
+  color: @blue;
 }
 
-#bluetooth {
-  margin-right: 17px;
+#waybar.main #custom-battery.warning,
+#waybar.main #battery.warning.discharging {
+  color: @red;
 }
 
-#network {
-  margin-right: 13px;
+/* Charging */
+
+#waybar.main #custom-battery.charging {
+  color: @green;
+
+  animation: blink-modifier-text 1s steps(15) infinite alternate;
 }
 
-#custom-expand-icon {
-  margin-right: 18px;
+/* Workspaces */
+
+#waybar.main #workspaces button {
+  color: @foreground;
+
+  background: transparent;
+
+  border: 1.5px solid transparent;
+
+  margin: 8px 4px 8px 4px;
+
+  padding-left: 2pt;
+
+  padding-right: 2pt;
+
+  border-radius: 16px;
+
+  transition: all 0.25s ease;
 }
+
+#waybar.main #workspaces button.visible {
+  color: @blue;
+}
+
+#waybar.main #workspaces button:hover {
+  color: @blue;
+}
+
+#waybar.main #workspaces button.special.active {
+  border: 1.5px solid transparent;
+
+  color: @blue;
+
+  animation: blink-modifier-text 1s steps(15) infinite alternate;
+}
+
+/* Spacers */
+
+#waybar.main #custom-spacer1,
+#waybar.main #custom-spacer2,
+#waybar.main #custom-spacer3 {
+  font-size: 10pt;
+
+  font-weight: bold;
+
+  color: @foreground;
+
+  background: transparent;
+}
+
+/* Tray icon */
+
+#waybar.main #custom-trayicon {
+  font-size: 11pt;
+
+  font-weight: bold;
+
+  font-style: italic;
+
+  color: @blue;
+
+  background: transparent;
+
+  padding-right: 6pt;
+
+  padding-left: 2pt;
+}
+
+/* Tooltip */
 
 tooltip {
-  padding: 2px;
+  background: rgba(26, 27, 38, 0.75);
+
+  border: 3px solid @cyan;
+
+  border-radius: 8px;
+
+  font-weight: 500;
+
+  font-family: "JetBrains Mono Nerd Font";
 }
 
-#custom-update {
-  font-size: 10px;
+#waybar.main #tray menu {
+  background: rgba(26, 27, 38, 0.75);
+
+  border: 3px solid @cyan;
+
+  border-radius: 8px;
 }
 
-#clock {
-  margin-left: 8.75px;
+/* Battery animations */
+
+@keyframes blink-critical-battery {
+  to {
+    border-color: @red;
+  }
 }
 
-.hidden {
-  opacity: 0;
+@keyframes blink-warning-battery {
+  to {
+    border-color: @red;
+  }
 }
 
-#custom-screenrecording-indicator {
-  min-width: 12px;
-  margin-left: 8.75px;
-  font-size: 10px;
+@keyframes blink-discharging-battery {
+  to {
+    border-color: @red;
+  }
 }
 
-#custom-screenrecording-indicator.active {
-  color: #a55555;
+@keyframes blink-charging-battery {
+  to {
+    border-color: @green;
+  }
+}
+
+@keyframes blink-full-battery {
+  to {
+    border-color: @green;
+  }
 }
