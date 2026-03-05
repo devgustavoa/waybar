@@ -1,25 +1,25 @@
 /* vim: set fileencoding=utf-8 foldmethod=marker : */
 
-@define-color background #000000;
-@define-color foreground #dfdbdc;
-@define-color black      #100e0e;
-@define-color red        #933737;
-@define-color green      #d18f5e;
-@define-color yellow     #e0af68;
-@define-color blue       #4b6f7a;
-@define-color magenta    #a48096;
-@define-color cyan       #82787c;
-@define-color white      #cac3c5;
-@define-color bright-black   #2e292a;
-@define-color bright-red     #c44b4f;
-@define-color bright-green   #ff9e3b;
-@define-color bright-yellow  #ffc777;
-@define-color bright-blue    #6895a3;
-@define-color bright-magenta #d09bc2;
-@define-color bright-cyan    #a89da1;
-@define-color bright-white   #f4f3f3;
-@define-color orange #ff9e3b;
-@define-color error  #c44b4f;
+@define-color background #1F1F28;
+@define-color foreground #DCD7BA;
+@define-color black      #16161D;
+@define-color red        #C34043;
+@define-color green      #76946A;
+@define-color yellow     #C0A36E;
+@define-color blue       #7E9CD8;
+@define-color magenta    #957FB8;
+@define-color cyan       #7AA89F;
+@define-color white      #C8C093;
+@define-color bright-black   #2A2A37;
+@define-color bright-red     #E82424;
+@define-color bright-green   #98BB6C;
+@define-color bright-yellow  #E6C384;
+@define-color bright-blue    #7FB4CA;
+@define-color bright-magenta #9CABCA;
+@define-color bright-cyan    #6A9589;
+@define-color bright-white   #DCD7BA;
+@define-color orange #FFA066;
+@define-color error  #E82424;
 
 /* Reset */
 
