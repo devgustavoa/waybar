@@ -1,6 +1,6 @@
 /* vim: set fileencoding=utf-8 foldmethod=marker : */
 
-@define-color background #1F1F28;
+@define-color background #000000;
 @define-color foreground #DCD7BA;
 @define-color black      #16161D;
 @define-color red        #C34043;
