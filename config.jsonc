@@ -1,70 +1,38 @@
 [
   {
-
-    // MAIN BAR //
-
+    // Main bar
     "layer": "top",
-
     "position": "top",
-
+    "id": "main",
     "name": "main",
-
-"exclusive": true,
-
+    "ipc": true,
+    "exclusive": true,
     "modules-left": [
-
       "group/tray",
-
       "custom/spacer3",
-
       "custom/spacer2",
-
-      "hyprland/workspaces",
-
+      "sway/workspaces",
       "custom/spacer2",
-
       "custom/spacer3",
-
-      "hyprland/submap",
-
-      "hyprland/window"
-
+      "sway/mode",
+      "sway/window"
     ],
-
     "modules-right": [
-
       "custom/spacer1",
-
       "cpu",
-
       "temperature",
-
-      "custom/nvidia",
-
       "group/storage",
-
       "network#info",
-
       "custom/spacer1",
-
       "pulseaudio#input",
-
       "pulseaudio#output",
-
       "custom/spacer1",
-
-      "hyprland/language",
-
+      "sway/language",
       "backlight",
-
-      "custom/battery",
-
+      "battery",
       "custom/spacer1",
-
       "custom/weather",
-
       "clock"
-
     ],
 
     "disk": {
@@ -177,39 +145,49 @@
 
     },
 
-    "custom/nvidia": {
+    "battery": {
 
       "interval": 4,
 
-      "return-type": "json",
+      "states": {
 
-      "exec": "~/.config/hypr/themes/Mocha/nvidia.sh",
+        "warning": 30,
 
-      "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
+        "critical": 15
 
-      "tooltip": "true",
+      },
 
-      "tooltip-format": "{alt}"
+      "format": "{icon} {capacity}%",
 
-    },
+      "format-charging": "󰂄 {capacity}%",
 
-    "custom/battery": {
+      "format-plugged": "󰂄 {capacity}%",
 
-      "interval": 4,
+      "format-icons": [
 
-      "return-type": "json",
+        "󰁺",
 
-      "exec": "~/.config/hypr/themes/Mocha/bat-pp.sh refresh",
+        "󰁻",
 
-      "exec-on-event": true,
+        "󰁼",
 
-      "format": "{text}%",
+        "󰁽",
 
-      "on-click": "~/.config/hypr/themes/Mocha/bat-pp.sh toggle & aplay ~/.config/sounds/interact.wav",
+        "󰁾",
 
-      "tooltip": "true",
+        "󰁿",
 
-      "tooltip-format": "{alt}W"
+        "󰂀",
+
+        "󰂁",
+
+        "󰂂",
+
+        "󰁹"
+
+      ],
+
+      "tooltip": true
 
     },
 
@@ -234,13 +212,9 @@
         "format": {
 
           "months": "<span color='#cba6f7'><b>{}</b></span>",
-
           "days": "<span color='#cdd6f4'><b>{}</b></span>",
-
           "weeks": "<span color='#94e2d5'> W{}</span>",
-
           "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-
           "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
 
         }
@@ -267,13 +241,11 @@
 
     },
 
-    "hyprland/language": {
+    "sway/language": {
 
       "format": " {}",
 
       "min-length": 7,
-
-      "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
 
       "tooltip": false,
 
@@ -479,7 +451,7 @@
 
     "custom/trayicon": {
 
-      "format": "",
+      "format": "󱄅",
 
       "tooltip": false
 
